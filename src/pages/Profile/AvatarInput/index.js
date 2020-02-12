@@ -12,7 +12,6 @@ export default function AvatarInput() {
 
   const ref = useRef();
 
-  /**
   useEffect(() => {
     if (ref.current) {
       registerField({
@@ -21,19 +20,20 @@ export default function AvatarInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
-  */
+  }, [ref]); // eslint-disable-line
 
   async function handleChange(e) {
     const data = new FormData();
 
     data.append('file', e.target.files[0]);
 
+    /**
     registerField({
       name: 'avatar_id',
       ref: ref.current,
       path: 'dataset.file',
     });
+     */
 
     const response = await api.post('files', data);
 
